@@ -1,3 +1,3 @@
 spring.data.mongodb:
-  uri: mongodb+srv://immiportalroot:qmHr8vPd29rz4e8m@immiportalcluster-hebmd.mongodb.net/sample_airbnb?retryWrites=true&w=majority
-  database: sample_airbnb
+  uri: mongodb+srv://immiportalroot:qmHr8vPd29rz4e8m@immiportalcluster-hebmd.mongodb.net/immiportal?retryWrites=true&w=majority
+  database: immiportal
