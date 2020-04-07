@@ -17,7 +17,7 @@ public class ImmiPortalServiceImpl implements ImmiPortalService {
     private EmploymentRepository employmentRepository;
 
     @Override
-    public void addEmployment(String userId, Employer employer) {
+    public void addEmployer(String userId, Employer employer) {
 
         log.info("received request to add employer to employment history");
         Employment employment = getEmploymentHistory(userId);
@@ -34,7 +34,7 @@ public class ImmiPortalServiceImpl implements ImmiPortalService {
     }
 
     @Override
-    public void updateEmployment(String userId, Employer employer) {
+    public void updateEmployer(String userId, Employer employer) {
 
     }
 

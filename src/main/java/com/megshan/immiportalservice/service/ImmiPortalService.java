@@ -5,7 +5,7 @@ import com.megshan.immiportalservice.domain.employment.Employment;
 
 public interface ImmiPortalService {
 
-    void addEmployment(String userId, Employer employer);
-    void updateEmployment(String userId, Employer employer);
+    void addEmployer(String userId, Employer employer);
+    void updateEmployer(String userId, Employer employer);
     Employment getEmploymentHistory(String userId);
 }

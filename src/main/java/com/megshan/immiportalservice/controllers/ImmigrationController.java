@@ -1,10 +1,10 @@
 package com.megshan.immiportalservice.controllers;
 
-import com.megshan.immiportalservice.domain.UserData;
 import com.megshan.immiportalservice.domain.employment.Employer;
 import com.megshan.immiportalservice.domain.employment.Employment;
 import com.megshan.immiportalservice.service.ImmiPortalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -23,8 +23,15 @@ public class ImmigrationController {
         return immiPortalService.getEmploymentHistory(userId);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(method = RequestMethod.POST, path = "{userId}/employment")
-    public void addEmployment(@PathVariable String userId, @RequestBody Employer employer) {
-        immiPortalService.addEmployment(userId, employer);
+    public void addEmployer(@PathVariable String userId, @RequestBody Employer employer) {
+        immiPortalService.addEmployer(userId, employer);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(method = RequestMethod.PUT, path = "{userId}/employment")
+    public void updateEmployer(@PathVariable String userId, @RequestBody Employer employer) {
+        immiPortalService.updateEmployer(userId, employer);
     }
 }
