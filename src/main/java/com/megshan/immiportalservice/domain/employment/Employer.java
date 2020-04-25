@@ -9,7 +9,7 @@ public class Employer {
     private String id;
     private String name;
     private String title;
-    private Address address;
+//    private Address address;
     // format - mm/dd/yyyy
     // TODO - use java.util.Date and convert to BSON and vice versa
     private String fromDate;
