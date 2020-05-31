@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -53,6 +55,19 @@ public class ImmiPortalServiceImpl implements ImmiPortalService {
     }
 
     @Override
+    public void deleteEmployer(String userId, String employerId) {
+        log.info("received request to delete employer, userId={}, employerId={}", userId, employerId);
+        Employment employment = getEmploymentHistory(userId);
+
+        List<Employer> updatedEmployers = employment.getEmployers().stream()
+                .filter(employer -> !employer.getId().equalsIgnoreCase(employerId))
+                .collect(Collectors.toList());
+        employment.setEmployers(updatedEmployers);
+        employmentRepository.save(employment);
+        log.info("successfully deleted employer from employment history");
+    }
+
+    @Override
     public void addTravel(String userId, Travel travel) {
         log.info("received request to add travel to travel history");
         TravelHistory travelHistory = getTravelHistory(userId);
@@ -79,5 +94,18 @@ public class ImmiPortalServiceImpl implements ImmiPortalService {
         TravelHistory travelHistory = travelRepository.findById(userId).orElse(null);
         log.info("successfully fetched travel history, travelHistory={}", travelHistory);
         return travelHistory;
+    }
+
+    @Override
+    public void deleteTravel(String userId, String travelId) {
+        log.info("received request to delete travel, userId={}, travelId={}", userId, travelId);
+        TravelHistory travelHistory = getTravelHistory(userId);
+
+        List<Travel> updatedTravelHistory = travelHistory.getTravelHistory().stream()
+                .filter(travel -> !travel.getId().equalsIgnoreCase(travelId))
+                .collect(Collectors.toList());
+        travelHistory.setTravelHistory(updatedTravelHistory);
+        travelRepository.save(travelHistory);
+        log.info("successfully deleted travel from travel history");
     }
 }

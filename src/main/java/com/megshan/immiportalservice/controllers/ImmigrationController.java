@@ -38,6 +38,12 @@ public class ImmigrationController {
         immiPortalService.updateEmployer(userId, employer);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(method = RequestMethod.DELETE, path = "{userId}/employment/{employerId}")
+    public void deleteEmployer(@PathVariable String userId, @PathVariable String employerId) {
+        immiPortalService.deleteEmployer(userId, employerId);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "{userId}/travel")
     public TravelHistory getTravelHistory(@PathVariable String userId) {
         return immiPortalService.getTravelHistory(userId);
@@ -53,5 +59,11 @@ public class ImmigrationController {
     @RequestMapping(method = RequestMethod.PUT, path = "{userId}/travel")
     public void updateTravel(@PathVariable String userId, @RequestBody Travel travel) {
         immiPortalService.updateTravel(userId, travel);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(method = RequestMethod.DELETE, path = "{userId}/travel/{travelId}")
+    public void deleteTravel(@PathVariable String userId, @PathVariable String travelId) {
+        immiPortalService.deleteTravel(userId, travelId);
     }
 }

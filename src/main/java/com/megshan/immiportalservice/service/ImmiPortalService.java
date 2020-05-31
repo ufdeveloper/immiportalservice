@@ -10,8 +10,10 @@ public interface ImmiPortalService {
     void addEmployer(String userId, Employer employer);
     void updateEmployer(String userId, Employer employer);
     Employment getEmploymentHistory(String userId);
+    void deleteEmployer(String userId, String employerId);
 
     void addTravel(String userId, Travel travel);
     void updateTravel(String userId, Travel travel);
     TravelHistory getTravelHistory(String userId);
+    void deleteTravel(String userId, String travelId);
 }
