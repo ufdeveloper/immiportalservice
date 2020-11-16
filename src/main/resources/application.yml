@@ -1,3 +1,10 @@
 spring.data.mongodb:
   uri: mongodb+srv://immiportalroot:qmHr8vPd29rz4e8m@immiportalcluster-hebmd.mongodb.net/immiportal?retryWrites=true&w=majority
   database: immiportal
+
+okta:
+  oauth2:
+    issuer: https://dev-1414107.okta.com/oauth2/default
+    clientId: 0oarnq3jSgUbiwocW5d
+    clientSecret: dC6pIa83VkD2okDFGj9AKqpjx4on7SbTrsLzNeq
+    scopes: openid+profile+readBoo

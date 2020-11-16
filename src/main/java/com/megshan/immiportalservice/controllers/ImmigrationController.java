@@ -5,14 +5,19 @@ import com.megshan.immiportalservice.domain.employment.Employment;
 import com.megshan.immiportalservice.domain.travel.Travel;
 import com.megshan.immiportalservice.domain.travel.TravelHistory;
 import com.megshan.immiportalservice.service.ImmiPortalService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 /**
  * Controller for all user data
  */
 
+@Slf4j
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("portal")
@@ -21,8 +26,10 @@ public class ImmigrationController {
     @Autowired
     private ImmiPortalService immiPortalService;
 
+    @PreAuthorize("#oauth2.hasScope('openid')")
     @RequestMapping(method = RequestMethod.GET, path = "{userId}/employment")
-    public Employment getEmploymentHistory(@PathVariable String userId) {
+    public Employment getEmploymentHistory(@PathVariable String userId, Principal principal) {
+        log.info("user={}", principal.getName());
         return immiPortalService.getEmploymentHistory(userId);
     }
 
