@@ -26,7 +26,8 @@ public class ImmigrationController {
     @Autowired
     private ImmiPortalService immiPortalService;
 
-    @PreAuthorize("#oauth2.hasScope('openid')")
+    @ResponseStatus(HttpStatus.OK)
+//    @PreAuthorize("#oauth2.hasScope('openid')")
     @RequestMapping(method = RequestMethod.GET, path = "{userId}/employment")
     public Employment getEmploymentHistory(@PathVariable String userId, Principal principal) {
         log.info("user={}", principal.getName());

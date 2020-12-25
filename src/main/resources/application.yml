@@ -4,7 +4,4 @@ spring.data.mongodb:
 
 okta:
   oauth2:
-    issuer: https://dev-1414107.okta.com/oauth2/default
-    clientId: 0oarnq3jSgUbiwocW5d
-    clientSecret: dC6pIa83VkD2okDFGj9AKqpjx4on7SbTrsLzNeq
-    scopes: openid+profile+readBoo
+    issuer: https://dev-565937.okta.com/oauth2/default
